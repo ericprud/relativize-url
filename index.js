@@ -5,14 +5,14 @@ class RelativizeUrl {
     {name: 'port', write: u => u.port === '' ? '' : (':' + u.port) },
     {name: 'pathname', write: (u, frm, relativize) => {
       if (!relativize || u.pathname === '' || frm.pathname === '') return u.pathname;
-
       const f = frm.pathname.split('/').slice(1);
       const t = u.pathname.split('/').slice(1);
-      if (f[0] !== t[0]) return u.pathname;
+      const maxDepth = Math.max(f.length, t.length);
 
-      let start = 1;
-      while(f[start] === t[start]) ++start;
-      return f.slice(start+1).map(c => '..').concat(t.slice(start)).join('/');
+      let start = 0;
+      while(start < maxDepth && f[start] === t[start]) ++start;
+      const rel = f.slice(start+1).map(c => '..').concat(t.slice(start)).join('/');
+      return rel.length <= u.pathname.length ? rel : u.pathname
     }},
     {name: 'search', write: u => u.search },
     {name: 'hash', write: u => u.hash},
@@ -22,7 +22,7 @@ class RelativizeUrl {
 
   relate (rel) { return RelativizeUrl.relativize(rel, this.base, this.options); }
 
-  static relativize (rel, base, opts) {
+  static relativize (rel, base, opts = {}) { // opts not yet used
     const from = new URL(base);
     const to = new URL(rel, from);
     let ret = '';
