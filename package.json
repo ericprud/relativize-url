@@ -1,5 +1,24 @@
 {
+  "name": "relativize-url",
+  "version": "0.0.1",
+  "description": "Construct relative URL from source and target URL",
+  "main": "index.js",
+  "dependencies": {},
   "devDependencies": {
     "jest": "^29.3.1"
-  }
+  },
+  "scripts": {
+    "test": "jest --coverage --collectCoverageFrom index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ericprud/relativize-url.git"
+  },
+  "keywords": ["relative URL", "relativize", "make relative", "URL"],
+  "author": "Eric Prud'hommeaux",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ericprud/relativize-url/issues"
+  },
+  "homepage": "https://github.com/ericprud/relativize-url#readme"
 }

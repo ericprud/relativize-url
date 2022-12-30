@@ -41,5 +41,6 @@ class RelativizeUrl {
   }
 }
 
+/* istanbul ignore next */
 if (typeof require !== "undefined" && typeof exports !== "undefined")
   module.exports = RelativizeUrl;
