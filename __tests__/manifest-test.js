@@ -1,4 +1,4 @@
-const RelativizeUrl = require('../index');
+const RelativizeUrl = require('../relativize-url');
 const RelativeUrlTestList = require('./manifest');
 
 describe('manifest tests', () => {

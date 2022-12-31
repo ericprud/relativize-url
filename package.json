@@ -1,14 +1,14 @@
 {
   "name": "relativize-url",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Construct relative URL from source and target URL",
-  "main": "index.js",
+  "main": "relativize-url.js",
   "dependencies": {},
   "devDependencies": {
     "jest": "^29.3.1"
   },
   "scripts": {
-    "test": "jest --coverage --collectCoverageFrom index.js"
+    "test": "jest --coverage --collectCoverageFrom relativize-url.js"
   },
   "repository": {
     "type": "git",
