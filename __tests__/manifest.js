@@ -20,6 +20,7 @@ RelativeUrlTestList = [
       {rel: '//google.com:80/dir/', exp: '//google.com/dir/'},
       {rel: 'https://example.com:1234/dir0/dir1/dir1-1/', exp: 'https://example.com:1234/dir0/dir1/dir1-1/'},
       {rel: '../../../../../../../../#anchor', exp: '/#anchor'},
+      {rel: 'tag:example.com,2004:1234', exp: 'tag:example.com,2004:1234'},
     ]
   },
   { // relateurl demo with different port

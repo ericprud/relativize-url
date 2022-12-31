@@ -2,9 +2,9 @@ class RelativizeUrl {
   static components = [
     {name: 'protocol', write: u => u.protocol },
     {name: 'hostname', write: u => '//' + u.hostname },
-    {name: 'port', write: u => u.port === '' ? '' : (':' + u.port) },
+    {name: 'port', write: u => ':' + u.port },
     {name: 'pathname', write: (u, frm, relativize) => {
-      if (!relativize || u.pathname === '' || frm.pathname === '') return u.pathname;
+      if (!relativize) return u.pathname;
       const f = frm.pathname.split('/').slice(1);
       const t = u.pathname.split('/').slice(1);
       const maxDepth = Math.max(f.length, t.length);
@@ -26,15 +26,13 @@ class RelativizeUrl {
     const from = new URL(base);
     const to = new URL(rel, from);
     let ret = '';
-    for (let i = 0; i < RelativizeUrl.components.length; ++i) {
-      const component = RelativizeUrl.components[i];
-      if (ret) {
-        ret += component.write(to, from, false);
-      } else {
-        const [l, r] = [from[component.name], to[component.name]];
-        if (l !== r) {
-          ret = component.write(to, from, true);
+    for (let component of RelativizeUrl.components) {
+      if (ret) { // force abs path if e.g. host was diffferent
+        if (to[component.name]) {
+          ret += component.write(to, from, false);
         }
+      } else if (from[component.name] !== to[component.name]) {
+        ret = component.write(to, from, true);
       }
     }
     return ret;
