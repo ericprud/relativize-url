@@ -11,7 +11,7 @@ class RelativizeUrl {
 
       let start = 0;
       while(start < maxDepth && f[start] === t[start]) ++start;
-      const rel = f.slice(start+1).map(c => '..').concat(t.slice(start)).join('/');
+      const rel = f.slice(start+1).map(c => '..').concat(t.slice(start === f.length ? start - 1 : start)).join('/');
       return rel.length <= u.pathname.length ? rel : u.pathname
     }},
     {name: 'search', write: u => u.search },
