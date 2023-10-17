@@ -1,6 +1,6 @@
 {
   "name": "relativize-url",
-  "version": "0.0.2",
+  "version": "0.1.0",
   "description": "Construct relative URL from source and target URL",
   "main": "relativize-url.js",
   "dependencies": {},
