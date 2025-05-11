@@ -24,6 +24,12 @@ console.log(getRel(target, base));
 console.log(new URL('../c/d', base).href === target);
 // true
 ```
+Note that the the relative URL is calculated by `URL` (all caps), which canonicalizes the protocol and domain name (but not %-encoded characters).
+
+``` js
+getRel("HTTP://B.example:80/%61", "ftp://a.example/")
+'http://b.example/%61'
+```
 
 The [`__tests__/manifest.js`](https://github.com/ericprud/relativize-url/blob/main/__tests__/manifest.js) file has a list of tests that demo this pretty well.
 
