@@ -1,4 +1,3 @@
-// GENERATED from relativize-url.mjs by scripts/build-cjs.mjs -- edit that file instead.
 class RelativizeUrl {
   static components = [
     {name: 'protocol', write: u => u.protocol },
@@ -40,6 +39,7 @@ class RelativizeUrl {
   }
 }
 
-/* istanbul ignore next */
-if (typeof require !== "undefined" && typeof exports !== "undefined")
-  module.exports = RelativizeUrl;
+// Single-line exports only; scripts/build-cjs.mjs strips these to generate relativize-url.js.
+export const relativize = RelativizeUrl.relativize;
+export { RelativizeUrl };
+export default RelativizeUrl;

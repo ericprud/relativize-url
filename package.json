@@ -3,18 +3,49 @@
   "version": "0.1.1",
   "description": "Construct relative URL from source and target URL",
   "main": "relativize-url.js",
+  "types": "relativize-url.d.ts",
+  "files": [
+    "relativize-url.js",
+    "relativize-url.mjs",
+    "relativize-url.d.ts",
+    "relativize-url.d.mts"
+  ],
+  "exports": {
+    ".": {
+      "import": {
+        "types": "./relativize-url.d.mts",
+        "default": "./relativize-url.mjs"
+      },
+      "require": {
+        "types": "./relativize-url.d.ts",
+        "default": "./relativize-url.js"
+      }
+    },
+    "./relativize-url.js": {
+      "types": "./relativize-url.d.ts",
+      "default": "./relativize-url.js"
+    },
+    "./package.json": "./package.json"
+  },
   "dependencies": {},
   "devDependencies": {
-    "jest": "^29.3.1"
+    "jest": "^29.3.1",
+    "typescript": "^5.9.3"
   },
   "scripts": {
-    "test": "jest --coverage --collectCoverageFrom relativize-url.js"
+    "build": "node scripts/build-cjs.mjs",
+    "pretest": "npm run build",
+    "test": "npm run test:cjs && npm run test:esm && npm run test:types",
+    "test:cjs": "jest --coverage --collectCoverageFrom relativize-url.js",
+    "test:esm": "node --test __tests__/esm-test.mjs",
+    "test:types": "tsc -p __tests__/types",
+    "prepack": "npm run build"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/ericprud/relativize-url.git"
   },
-  "keywords": ["relative URL", "relativize", "make relative", "URL"],
+  "keywords": ["relative URL", "relativize", "make relative", "URL", "esm", "typescript"],
   "author": "Eric Prud'hommeaux",
   "license": "ISC",
   "bugs": {
