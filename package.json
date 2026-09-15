@@ -1,6 +1,6 @@
 {
   "name": "relativize-url",
-  "version": "0.1.1",
+  "version": "1.0.0",
   "description": "Construct relative URL from source and target URL",
   "main": "relativize-url.js",
   "types": "relativize-url.d.ts",
@@ -45,7 +45,14 @@
     "type": "git",
     "url": "git+https://github.com/ericprud/relativize-url.git"
   },
-  "keywords": ["relative URL", "relativize", "make relative", "URL", "esm", "typescript"],
+  "keywords": [
+    "relative URL",
+    "relativize",
+    "make relative",
+    "URL",
+    "esm",
+    "typescript"
+  ],
   "author": "Eric Prud'hommeaux",
   "license": "ISC",
   "bugs": {
